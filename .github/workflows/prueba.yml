@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: Verificar DEV_TOKEN
         env:
-          GITHUB_DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
+          DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
         run: |
-          if ($env:GITHUB_DEV_TOKEN -eq $env:LOCAL_DEV_TOKEN) {
+          if ($env:DEV_TOKEN -eq $env:LOCAL_DEV_TOKEN) {
             Write-Output "COINCIDEN."
           } else {
             Write-Output "NO COINCIDEN."
