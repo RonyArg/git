@@ -1,0 +1,18 @@
+name: Comparar Tokens
+
+on: [push]
+
+jobs:
+  comparar-secret-local:
+    runs-on: self-hosted
+    steps:
+      - name: Verificar DEV_TOKEN
+        env:
+          GITHUB_DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
+        run: |
+          if ($env:GITHUB_DEV_TOKEN -eq $env:LOCAL_DEV_TOKEN) {
+            Write-Output "COINCIDEN."
+          } else {
+            Write-Output "NO COINCIDEN."
+            exit 1
+          }
